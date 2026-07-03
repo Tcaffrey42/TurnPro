@@ -1,9 +1,3 @@
-# TurnPro Phase 1
+# TurnPro
 
-Vercel settings:
-- Framework: Vite
-- Install Command: npm install
-- Build Command: npm run build
-- Output Directory: dist
-
-Do not upload package-lock.json.
+Vercel-ready Vite app. Entry file is root-level `main.tsx` to avoid missing `/src/main.tsx` deploy errors.
