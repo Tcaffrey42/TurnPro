@@ -1,11 +1,26 @@
-# TurnPro RUN 4 — Logo + Revenue Message Fix
+# TurnPro Run 3 — Logo + Revenue Messaging Fix
 
-Flat-root Vercel package. No src folder. No public folder. No external logo image.
+Deploy-safe Vercel package using the proven flat-root structure.
 
-Visible proof marker on homepage: RUN 4 LIVE.
+## Files
 
-Hero message:
-Turn Empty Apartments Into More Revenue
+- index.html
+- package.json
+- main.jsx
+- styles.css
+- .npmrc
+- .gitignore
+- README.md
 
-Core business message:
-Every vacant day is a lost revenue day. TurnPro gets move-outs painted, cleaned, closed out, and rent-ready ASAP so operators lose fewer revenue days and property teams deal with fewer headaches.
+## Notes
+
+- No src folder
+- No public folder
+- No external logo image
+- Inline SVG/CSS TurnPro logo
+- Hero message updated to: "Turn Empty Apartments Into More Revenue"
+- Vacancy-day message added: "Every vacant day is a lost revenue day."
+
+## Deploy
+
+Upload the ZIP to GitHub or Vercel using the root folder as-is.
