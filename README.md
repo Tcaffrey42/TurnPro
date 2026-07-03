@@ -1,3 +1,9 @@
-# TurnPro
+# TurnPro Sprint 1
 
-Vercel-ready Vite app. Entry file is root-level `main.tsx` to avoid missing `/src/main.tsx` deploy errors.
+Vercel settings:
+- Framework: Vite
+- Install command: npm install
+- Build command: npm run build
+- Output directory: dist
+
+Upload the contents of this ZIP to the root of the GitHub repo.
