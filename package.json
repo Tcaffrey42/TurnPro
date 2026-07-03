@@ -1,19 +1,12 @@
 {
-  "name": "turnpro-run3-logo-message-fix",
-  "version": "0.3.0",
+  "name": "turnpro-run5-static-deploy-proof",
+  "version": "0.5.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "mkdir -p dist && cp index.html dist/index.html",
+    "dev": "python3 -m http.server 5173",
+    "preview": "python3 -m http.server 4173 -d dist"
   },
-  "dependencies": {
-    "@vitejs/plugin-react": "latest",
-    "vite": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "lucide-react": "latest"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }
