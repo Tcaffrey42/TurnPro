@@ -1,5 +1,5 @@
 {
-  "name": "turnpro-sprint1-run1",
+  "name": "turnpro-sprint1-run1-flat-fix",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -17,6 +17,6 @@
   },
   "devDependencies": {},
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   }
 }

@@ -1,13 +1,17 @@
-# TurnPro Sprint 1 - Run 1 Vercel No-Lock
+# TurnPro Sprint 1 Run 1 - Flat Vercel Fix
 
-This package is intentionally shipped WITHOUT package-lock.json because the previous lockfile contained private/internal registry URLs that can cause Vercel to hang during dependency install.
+This package is intentionally flat to avoid GitHub web-upload folder issues.
 
-## Vercel settings
+Required repo root files:
+- index.html
+- package.json
+- main.jsx
+- styles.css
+- .npmrc
+- .gitignore
+
+Vercel settings:
 - Framework: Vite
 - Install Command: npm install --registry=https://registry.npmjs.org/ --no-audit --no-fund
 - Build Command: npm run build
 - Output Directory: dist
-
-## Important
-Do not commit node_modules, dist, or package-lock.json for this deploy pass.
-Use Vercel: Redeploy -> Clear Build Cache and Redeploy.
