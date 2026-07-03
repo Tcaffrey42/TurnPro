@@ -1,11 +1,7 @@
-{
-  "compilerOptions":{
-    "target":"ES2020",
-    "module":"ESNext",
-    "jsx":"react-jsx",
-    "moduleResolution":"bundler",
-    "strict":true,
-    "skipLibCheck":true
-  },
-  "include":["src"]
-}
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  base: '/',
+});

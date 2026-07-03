@@ -1,10 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
+# TurnPro Phase 1
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+Vercel settings:
+- Framework: Vite
+- Install Command: npm install
+- Build Command: npm run build
+- Output Directory: dist
+
+Do not upload package-lock.json.
