@@ -1,38 +1,13 @@
-# TurnPro Sprint 1 - Run 1 Clean Build
+# TurnPro Sprint 1 - Run 1 Vercel No-Lock
 
-Working Vite + React prototype for TurnPro Sprint 1.
+This package is intentionally shipped WITHOUT package-lock.json because the previous lockfile contained private/internal registry URLs that can cause Vercel to hang during dependency install.
 
-## Local run
+## Vercel settings
+- Framework: Vite
+- Install Command: npm install --registry=https://registry.npmjs.org/ --no-audit --no-fund
+- Build Command: npm run build
+- Output Directory: dist
 
-```bash
-npm install
-npm run dev
-```
-
-## Production build
-
-```bash
-npm run build
-```
-
-## Vercel deploy
-
-1. Upload/import this folder or GitHub repo into Vercel.
-2. Framework preset: Vite.
-3. Build command: `npm run build`.
-4. Output directory: `dist`.
-
-## Included screens
-
-- Dashboard
-- Properties
-- Turns
-- Vendors
-- Work Orders
-- Scheduling
-- Photos
-- Analytics
-- AI Copilot
-- Settings
-
-This package intentionally excludes `node_modules` so Vercel installs clean dependencies during deploy.
+## Important
+Do not commit node_modules, dist, or package-lock.json for this deploy pass.
+Use Vercel: Redeploy -> Clear Build Cache and Redeploy.
