@@ -41,6 +41,48 @@ const vendors = [
   { name: 'FloorPro', trade: 'Flooring', score: 86, open: 8 },
 ];
 
+
+function TurnProLogo({ compact = false }) {
+  return (
+    <div className={`turnproLogo ${compact ? 'compact' : ''}`} aria-label="TurnPro electric red logo">
+      <svg viewBox="0 0 900 260" role="img" aria-labelledby="turnproTitle">
+        <title id="turnproTitle">TurnPro</title>
+        <defs>
+          <linearGradient id="redGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#ff5a5a" />
+            <stop offset="42%" stopColor="#ff1111" />
+            <stop offset="100%" stopColor="#8f0000" />
+          </linearGradient>
+          <linearGradient id="silverText" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#ffffff" />
+            <stop offset="55%" stopColor="#d9dee7" />
+            <stop offset="100%" stopColor="#8f98a8" />
+          </linearGradient>
+          <filter id="electricGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.05 0 0 0  0 0 0.05 0 0  0 0 0 .9 0" result="glow" />
+            <feMerge>
+              <feMergeNode in="glow" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <rect width="900" height="260" rx="38" fill="#050506" />
+        <path d="M38 194 H820" stroke="#ff1010" strokeWidth="5" strokeLinecap="round" filter="url(#electricGlow)" opacity=".92" />
+        <path d="M43 105 H168" stroke="#ff1010" strokeWidth="11" strokeLinecap="round" opacity=".45" />
+        <path d="M30 132 H143" stroke="#ff1010" strokeWidth="7" strokeLinecap="round" opacity=".28" />
+        <g filter="url(#electricGlow)">
+          <path d="M160 50 H315 L295 92 H245 L202 202 H150 L193 92 H142 Z" fill="url(#redGlow)" />
+          <path d="M293 50 H384 C440 50 470 80 456 123 C442 166 402 186 343 186 H304 L289 222 H236 L287 92 H276 Z M334 94 L314 146 H354 C383 146 401 136 408 115 C414 99 401 94 374 94 Z" fill="url(#redGlow)" />
+        </g>
+        <text x="485" y="137" fontFamily="Inter, Arial, sans-serif" fontSize="84" fontWeight="900" fontStyle="italic" letterSpacing="-5" fill="url(#silverText)">Turn</text>
+        <text x="675" y="137" fontFamily="Inter, Arial, sans-serif" fontSize="84" fontWeight="900" fontStyle="italic" letterSpacing="-5" fill="url(#redGlow)" filter="url(#electricGlow)">Pro</text>
+        <text x="493" y="171" fontFamily="Inter, Arial, sans-serif" fontSize="15" fontWeight="800" letterSpacing="6" fill="#aeb4bf">APARTMENT TURN COMMAND</text>
+      </svg>
+    </div>
+  );
+}
+
 function App() {
   const [page, setPage] = useState('dashboard');
   const [query, setQuery] = useState('');
@@ -55,9 +97,9 @@ function App() {
   return (
     <div className="app">
       <aside>
-        <div className="brand">
-          <div className="logo">TP</div>
-          <div><b>TurnPro</b><span>Apartment Turn Command</span></div>
+        <div className="brand brandImage">
+          <TurnProLogo />
+          <span>Apartment Turn Command</span>
         </div>
         <nav>
           {nav.map(([id, label, Icon]) => (
@@ -75,9 +117,12 @@ function App() {
 
       <main>
         <header>
-          <div>
-            <h1>{title}</h1>
-            <p>National apartment turn operations command center.</p>
+          <div className="pageTitle">
+            <TurnProLogo compact />
+            <div>
+              <h1>{title}</h1>
+              <p>National apartment turn operations command center.</p>
+            </div>
           </div>
           <div className="topActions">
             <div className="search">
@@ -125,6 +170,20 @@ function KPIs() {
 function Dashboard({ act }) {
   return (
     <>
+      <section className="hero card">
+        <div className="heroCopy">
+          <span className="eyebrow">LIVE TURN OPERATIONS</span>
+          <h2>Run every apartment turn from one electric command center.</h2>
+          <p>Painting, cleaning, punch lists, vendors, photos, scheduling, SLA risk, and executive reporting — all moving in one workflow.</p>
+          <div className="heroActions">
+            <button className="primary" onClick={() => act('TurnPro command sequence started')}>Launch Command View</button>
+            <button onClick={() => act('Risk queue opened')}>View Risk Queue</button>
+          </div>
+        </div>
+        <div className="heroPanel">
+          <TurnProLogo />
+        </div>
+      </section>
       <KPIs />
       <div className="grid two">
         <section className="card">
