@@ -1,10 +1,9 @@
-# TurnPro Sprint 1 — Run 2 Deploy Fix
+# TurnPro Run 3 — Logo + Revenue Messaging Fix
 
-This is the electric-red TurnPro branded build based on the proven flat-root Vercel master.
+Deploy-safe Vercel package using the proven flat-root structure.
 
-Important fix: the electric TurnPro logo is now embedded directly in React/CSS as inline SVG. There is no external logo image and no public asset path, so Vercel/GitHub cannot break on a missing `public/turnpro-electric-logo.png` file.
+## Files
 
-## Root files
 - index.html
 - package.json
 - main.jsx
@@ -13,8 +12,15 @@ Important fix: the electric TurnPro logo is now embedded directly in React/CSS a
 - .gitignore
 - README.md
 
-## Vercel settings
-- Framework: Vite
-- Install Command: npm install --registry=https://registry.npmjs.org/ --no-audit --no-fund
-- Build Command: npm run build
-- Output Directory: dist
+## Notes
+
+- No src folder
+- No public folder
+- No external logo image
+- Inline SVG/CSS TurnPro logo
+- Hero message updated to: "Turn Empty Apartments Into More Revenue"
+- Vacancy-day message added: "Every vacant day is a lost revenue day."
+
+## Deploy
+
+Upload the ZIP to GitHub or Vercel using the root folder as-is.

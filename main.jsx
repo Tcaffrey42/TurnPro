@@ -1,273 +1,239 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 import {
-  Building2, RefreshCw, Users, Wrench, CalendarDays, Camera, BarChart3, Bot,
-  Settings, Search, Bell, Plus, ChevronRight, CheckCircle2, AlertTriangle,
-  Clock, MapPin, ClipboardList
+  ArrowRight,
+  BellOff,
+  Building2,
+  CheckCircle2,
+  Clock3,
+  DollarSign,
+  FileCheck2,
+  Paintbrush,
+  ReceiptText,
+  ShieldCheck,
+  Sparkles,
+  Wrench,
+  Zap
 } from 'lucide-react';
 import './styles.css';
 
-const nav = [
-  ['dashboard', 'Dashboard', Building2],
-  ['properties', 'Properties', Building2],
-  ['turns', 'Turns', RefreshCw],
-  ['vendors', 'Vendors', Users],
-  ['workorders', 'Work Orders', Wrench],
-  ['scheduling', 'Scheduling', CalendarDays],
-  ['photos', 'Photos', Camera],
-  ['analytics', 'Analytics', BarChart3],
-  ['ai', 'AI Copilot', Bot],
-  ['settings', 'Settings', Settings],
-];
-
-const turns = [
-  { unit: 'Apt 204', property: 'Harbor Point', task: 'Paint + Clean', status: 'In Progress', vendor: 'Elite Paint', due: 'Today 4:00 PM', risk: 'On Track' },
-  { unit: 'Apt 118', property: 'Maple Commons', task: 'Final Clean', status: 'Late', vendor: 'CleanCo', due: 'Yesterday', risk: 'At Risk' },
-  { unit: 'Apt 411', property: 'Station Lofts', task: 'Punch List', status: 'Scheduled', vendor: 'Prime Turns', due: 'Tomorrow', risk: 'Watch' },
-  { unit: 'Apt 302', property: 'Bayview Flats', task: 'Floor Repair', status: 'Blocked', vendor: 'FloorPro', due: 'Friday', risk: 'Escalate' },
-];
-
-const properties = [
-  { name: 'Harbor Point', units: 312, active: 18, late: 2, city: 'Tampa, FL' },
-  { name: 'Maple Commons', units: 224, active: 11, late: 1, city: 'Charlotte, NC' },
-  { name: 'Station Lofts', units: 188, active: 9, late: 0, city: 'Austin, TX' },
-  { name: 'Bayview Flats', units: 420, active: 26, late: 4, city: 'Phoenix, AZ' },
-];
-
-const vendors = [
-  { name: 'Elite Paint', trade: 'Painting', score: 98, open: 14 },
-  { name: 'CleanCo', trade: 'Cleaning', score: 94, open: 22 },
-  { name: 'Prime Turns', trade: 'Full Turn', score: 91, open: 19 },
-  { name: 'FloorPro', trade: 'Flooring', score: 86, open: 8 },
-];
-
-
-function TurnProLogo({ compact = false }) {
+function TurnProLogo() {
   return (
-    <div className={`turnproLogo ${compact ? 'compact' : ''}`} aria-label="TurnPro electric red logo">
-      <svg viewBox="0 0 900 260" role="img" aria-labelledby="turnproTitle">
-        <title id="turnproTitle">TurnPro</title>
-        <defs>
-          <linearGradient id="redGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#ff5a5a" />
-            <stop offset="42%" stopColor="#ff1111" />
-            <stop offset="100%" stopColor="#8f0000" />
-          </linearGradient>
-          <linearGradient id="silverText" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="55%" stopColor="#d9dee7" />
-            <stop offset="100%" stopColor="#8f98a8" />
-          </linearGradient>
-          <filter id="electricGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="5" result="blur" />
-            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.05 0 0 0  0 0 0.05 0 0  0 0 0 .9 0" result="glow" />
-            <feMerge>
-              <feMergeNode in="glow" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        <rect width="900" height="260" rx="38" fill="#050506" />
-        <path d="M38 194 H820" stroke="#ff1010" strokeWidth="5" strokeLinecap="round" filter="url(#electricGlow)" opacity=".92" />
-        <path d="M43 105 H168" stroke="#ff1010" strokeWidth="11" strokeLinecap="round" opacity=".45" />
-        <path d="M30 132 H143" stroke="#ff1010" strokeWidth="7" strokeLinecap="round" opacity=".28" />
-        <g filter="url(#electricGlow)">
-          <path d="M160 50 H315 L295 92 H245 L202 202 H150 L193 92 H142 Z" fill="url(#redGlow)" />
-          <path d="M293 50 H384 C440 50 470 80 456 123 C442 166 402 186 343 186 H304 L289 222 H236 L287 92 H276 Z M334 94 L314 146 H354 C383 146 401 136 408 115 C414 99 401 94 374 94 Z" fill="url(#redGlow)" />
-        </g>
-        <text x="485" y="137" fontFamily="Inter, Arial, sans-serif" fontSize="84" fontWeight="900" fontStyle="italic" letterSpacing="-5" fill="url(#silverText)">Turn</text>
-        <text x="675" y="137" fontFamily="Inter, Arial, sans-serif" fontSize="84" fontWeight="900" fontStyle="italic" letterSpacing="-5" fill="url(#redGlow)" filter="url(#electricGlow)">Pro</text>
-        <text x="493" y="171" fontFamily="Inter, Arial, sans-serif" fontSize="15" fontWeight="800" letterSpacing="6" fill="#aeb4bf">APARTMENT TURN COMMAND</text>
-      </svg>
+    <div className="brand-lockup" aria-label="TurnPro logo">
+      <div className="logo-mark">
+        <svg viewBox="0 0 88 88" role="img" aria-label="TurnPro TP logo">
+          <defs>
+            <linearGradient id="tpGradient" x1="8" y1="8" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#ff2b2b" />
+              <stop offset="0.5" stopColor="#d80d16" />
+              <stop offset="1" stopColor="#7a0710" />
+            </linearGradient>
+            <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="5" result="blur" />
+              <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0 0 0 0.06  0 0 0 0 0.08  0 0 0 .55 0" />
+              <feMerge>
+                <feMergeNode />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+          <rect x="5" y="5" width="78" height="78" rx="21" fill="url(#tpGradient)" filter="url(#softGlow)" />
+          <path d="M22 24H64" stroke="white" strokeWidth="7" strokeLinecap="round" />
+          <path d="M33 24V64" stroke="white" strokeWidth="7" strokeLinecap="round" />
+          <path d="M45 64V24H56C64 24 69 29 69 36C69 44 63 49 55 49H45" stroke="white" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          <path d="M21 69H68" stroke="white" strokeOpacity="0.5" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+      </div>
+      <div className="brand-text">
+        <span className="brand-name">TurnPro</span>
+        <span className="brand-tag">Vacancy Days Become Revenue Days</span>
+      </div>
     </div>
+  );
+}
+
+function StatCard({ value, label, icon: Icon }) {
+  return (
+    <article className="stat-card">
+      <div className="stat-icon"><Icon size={20} /></div>
+      <div>
+        <strong>{value}</strong>
+        <span>{label}</span>
+      </div>
+    </article>
+  );
+}
+
+function PainCard({ icon: Icon, title, copy }) {
+  return (
+    <article className="pain-card">
+      <div className="pain-icon"><Icon size={22} /></div>
+      <h3>{title}</h3>
+      <p>{copy}</p>
+    </article>
+  );
+}
+
+function WorkflowStep({ number, title, copy, icon: Icon }) {
+  return (
+    <article className="workflow-step">
+      <div className="step-topline">
+        <span>{number}</span>
+        <Icon size={22} />
+      </div>
+      <h3>{title}</h3>
+      <p>{copy}</p>
+    </article>
   );
 }
 
 function App() {
-  const [page, setPage] = useState('dashboard');
-  const [query, setQuery] = useState('');
-  const [toast, setToast] = useState('');
-  const title = nav.find((n) => n[0] === page)?.[1] || 'Dashboard';
-
-  function act(message) {
-    setToast(message);
-    window.setTimeout(() => setToast(''), 2200);
-  }
-
   return (
-    <div className="app">
-      <aside>
-        <div className="brand brandImage">
+    <main className="site-shell">
+      <section className="hero-section">
+        <div className="bg-grid" />
+        <div className="glow glow-one" />
+        <div className="glow glow-two" />
+
+        <nav className="top-nav">
           <TurnProLogo />
-          <span>Apartment Turn Command</span>
-        </div>
-        <nav>
-          {nav.map(([id, label, Icon]) => (
-            <button key={id} onClick={() => setPage(id)} className={page === id ? 'active' : ''}>
-              <Icon size={18} />{label}
-            </button>
-          ))}
+          <a className="nav-cta" href="mailto:hello@turnpro.ai?subject=TurnPro%20Apartment%20Turns">
+            Talk Turns <ArrowRight size={17} />
+          </a>
         </nav>
-        <div className="sidecard">
-          <b>System Status</b>
-          <p>All dashboards live</p>
-          <small>Sprint 1 working prototype</small>
-        </div>
-      </aside>
 
-      <main>
-        <header>
-          <div className="pageTitle">
-            <TurnProLogo compact />
-            <div>
-              <h1>{title}</h1>
-              <p>National apartment turn operations command center.</p>
+        <div className="hero-content">
+          <div className="hero-copy">
+            <div className="eyebrow"><Zap size={16} /> Built for multifamily operators</div>
+            <h1>Turn Empty Apartments Into More Revenue</h1>
+            <p className="hero-lede">
+              Every vacant day is a lost revenue day. TurnPro helps property teams get units rent-ready faster with less vendor noise, fewer complaints, clean billing, and zero babysitting.
+            </p>
+            <div className="hero-actions">
+              <a className="primary-button" href="mailto:hello@turnpro.ai?subject=Cut%20Vacancy%20Days">
+                Cut Vacancy Days <ArrowRight size={18} />
+              </a>
+              <a className="secondary-button" href="#system">See The System</a>
+            </div>
+            <div className="proof-strip" aria-label="TurnPro operating promises">
+              <span><CheckCircle2 size={16} /> In fast</span>
+              <span><CheckCircle2 size={16} /> Out quiet</span>
+              <span><CheckCircle2 size={16} /> Billed clean</span>
+              <span><CheckCircle2 size={16} /> Rent-ready faster</span>
             </div>
           </div>
-          <div className="topActions">
-            <div className="search">
-              <Search size={16} />
-              <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search turns, vendors, properties..." />
+
+          <div className="command-card" aria-label="TurnPro vacancy command card">
+            <div className="card-header">
+              <span>Live Turn Pipeline</span>
+              <strong>Vacant → Rent-Ready</strong>
             </div>
-            <button className="icon" onClick={() => act('Notifications opened')}><Bell size={18} /></button>
-            <button className="primary" onClick={() => act(`New ${title.replace(/s$/, '') || 'item'} action started`)}><Plus size={17} />New</button>
+            <div className="unit-card hot">
+              <div>
+                <span className="unit-label">Unit 4B</span>
+                <strong>Paint + clean scheduled</strong>
+              </div>
+              <span className="status-pill">Today</span>
+            </div>
+            <div className="unit-card">
+              <div>
+                <span className="unit-label">Unit 12A</span>
+                <strong>Final walkthrough queued</strong>
+              </div>
+              <span className="status-pill soft">Ready</span>
+            </div>
+            <div className="unit-card">
+              <div>
+                <span className="unit-label">Unit 7C</span>
+                <strong>Invoice matched to turn</strong>
+              </div>
+              <span className="status-pill soft">Clean</span>
+            </div>
+            <div className="revenue-meter">
+              <div className="meter-copy">
+                <span>Revenue drag reduced</span>
+                <strong>Vacancy days protected</strong>
+              </div>
+              <div className="meter-track"><span /></div>
+            </div>
           </div>
-        </header>
-        {toast && <div className="toast">{toast}</div>}
-        <View page={page} query={query} act={act} />
-      </main>
-    </div>
-  );
-}
-
-function View({ page, query, act }) {
-  if (page === 'dashboard') return <Dashboard act={act} />;
-  if (page === 'properties') return <Properties />;
-  if (page === 'turns') return <Turns query={query} act={act} />;
-  if (page === 'vendors') return <Vendors />;
-  if (page === 'workorders') return <WorkOrders act={act} />;
-  if (page === 'scheduling') return <Scheduling />;
-  if (page === 'photos') return <Photos />;
-  if (page === 'analytics') return <Analytics />;
-  if (page === 'ai') return <AI act={act} />;
-  return <SettingsPage act={act} />;
-}
-
-function KPIs() {
-  return (
-    <div className="kpis">
-      {[
-        ['Active Turns', '64', '+12 today'],
-        ['Due Today', '17', '5 need photos'],
-        ['Late', '7', '3 escalated'],
-        ['SLA', '94%', 'portfolio avg'],
-        ['Vendors', '38', 'active crews'],
-      ].map((k) => <div className="card kpi" key={k[0]}><span>{k[0]}</span><b>{k[1]}</b><small>{k[2]}</small></div>)}
-    </div>
-  );
-}
-
-function Dashboard({ act }) {
-  return (
-    <>
-      <section className="hero card">
-        <div className="heroCopy">
-          <span className="eyebrow">LIVE TURN OPERATIONS</span>
-          <h2>Run every apartment turn from one electric command center.</h2>
-          <p>Painting, cleaning, punch lists, vendors, photos, scheduling, SLA risk, and executive reporting — all moving in one workflow.</p>
-          <div className="heroActions">
-            <button className="primary" onClick={() => act('TurnPro command sequence started')}>Launch Command View</button>
-            <button onClick={() => act('Risk queue opened')}>View Risk Queue</button>
-          </div>
-        </div>
-        <div className="heroPanel">
-          <TurnProLogo />
         </div>
       </section>
-      <KPIs />
-      <div className="grid two">
-        <section className="card">
-          <div className="cardHead"><h2>Turn Queue</h2><button onClick={() => act('Turn queue filtered to high priority')}>Filter Priority</button></div>
-          <TurnTable rows={turns} />
-        </section>
-        <section className="card orange">
-          <h2>AI Command Center</h2>
-          <Insight icon={<AlertTriangle />} title="12 turns at risk" text="Recommend adding one cleaning crew in Tampa and Phoenix." />
-          <Insight icon={<Clock />} title="3 vendor deadlines overdue" text="CleanCo and FloorPro need escalation before 3 PM." />
-          <Insight icon={<CheckCircle2 />} title="SLA holding at 94%" text="Painting performance is carrying the portfolio this week." />
-          <button className="primary wide" onClick={() => act('AI summary generated')}>Generate Executive Summary</button>
-        </section>
-      </div>
-      <div className="grid two"><Activity /><VendorBoard /></div>
-    </>
+
+      <section className="stats-section" aria-label="TurnPro value pillars">
+        <StatCard value="ASAP" label="move-out to make-ready coordination" icon={Clock3} />
+        <StatCard value="Zero" label="vendor babysitting for property teams" icon={BellOff} />
+        <StatCard value="Clean" label="billing, updates, and closeout flow" icon={ReceiptText} />
+      </section>
+
+      <section className="message-section">
+        <div className="section-kicker">What operators actually want</div>
+        <h2>Not another vendor. A quiet turn engine.</h2>
+        <p>
+          Property managers want units turned ASAP, no complaints from our work, seamless billing, and vendors who get in, get out, and grow inside their ecosystem because they make life easier.
+        </p>
+        <div className="pain-grid">
+          <PainCard
+            icon={DollarSign}
+            title="Fewer lost revenue days"
+            copy="Vacancy kills NOI. TurnPro is built around reducing the time between move-out and rent-ready."
+          />
+          <PainCard
+            icon={ShieldCheck}
+            title="Fewer headaches"
+            copy="Clear scheduling, professional field teams, clean communication, and less property-team chasing."
+          />
+          <PainCard
+            icon={FileCheck2}
+            title="Cleaner billing"
+            copy="Turn work is organized, trackable, and easier to reconcile without invoice confusion or mystery charges."
+          />
+        </div>
+      </section>
+
+      <section className="workflow-section" id="system">
+        <div className="section-kicker">Move-out to money-back-on</div>
+        <h2>The TurnPro flow</h2>
+        <div className="workflow-grid">
+          <WorkflowStep
+            number="01"
+            icon={Building2}
+            title="Move-out hits"
+            copy="The vacant unit enters the turn pipeline and gets scheduled before days start slipping."
+          />
+          <WorkflowStep
+            number="02"
+            icon={Paintbrush}
+            title="Paint, clean, repair"
+            copy="Vendors coordinate the make-ready scope quickly, quietly, and professionally."
+          />
+          <WorkflowStep
+            number="03"
+            icon={Wrench}
+            title="Closeout stays clean"
+            copy="Updates, proof, billing, and completion status stay organized so teams are not chasing answers."
+          />
+          <WorkflowStep
+            number="04"
+            icon={Sparkles}
+            title="Rent-ready faster"
+            copy="The unit gets back on the market faster so empty space starts producing again."
+          />
+        </div>
+      </section>
+
+      <section className="closing-section">
+        <div>
+          <span className="section-kicker">TurnPro</span>
+          <h2>Every vacant day is a lost revenue day.</h2>
+          <p>TurnPro gives multifamily teams a faster, quieter, cleaner way to turn empty apartments into rent-ready revenue.</p>
+        </div>
+        <a className="primary-button" href="mailto:hello@turnpro.ai?subject=TurnPro%20Revenue%20Days">
+          Build My Turn Plan <ArrowRight size={18} />
+        </a>
+      </section>
+    </main>
   );
-}
-
-function TurnTable({ rows }) {
-  return (
-    <table>
-      <thead><tr><th>Unit</th><th>Property</th><th>Scope</th><th>Status</th><th>Vendor</th><th>Due</th><th>Risk</th></tr></thead>
-      <tbody>
-        {rows.map((t) => (
-          <tr key={t.unit}>
-            <td><b>{t.unit}</b></td><td>{t.property}</td><td>{t.task}</td>
-            <td><span className={`pill ${t.status.toLowerCase().replaceAll(' ', '')}`}>{t.status}</span></td>
-            <td>{t.vendor}</td><td>{t.due}</td><td>{t.risk}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
-
-function Properties() {
-  return <div className="grid cards">{properties.map((p) => <div className="card prop" key={p.name}><MapPin /><h2>{p.name}</h2><p>{p.city}</p><div className="metrics"><span>{p.units}<small>Units</small></span><span>{p.active}<small>Active</small></span><span className={p.late ? 'danger' : ''}>{p.late}<small>Late</small></span></div><button>Open Property <ChevronRight size={15} /></button></div>)}</div>;
-}
-
-function Turns({ query, act }) {
-  const list = turns.filter((t) => JSON.stringify(t).toLowerCase().includes(query.toLowerCase()));
-  return <section className="card"><div className="cardHead"><h2>All Turns</h2><button onClick={() => act('Bulk vendor update sent')}>Bulk Update Vendors</button></div>{list.length ? <TurnTable rows={list} /> : <p>No turns match your search.</p>}</section>;
-}
-
-function Vendors() {
-  return <><VendorBoard /><div className="grid cards">{vendors.map((v) => <div className="card" key={v.name}><h2>{v.name}</h2><p>{v.trade}</p><div className="score"><span style={{ width: `${v.score}%` }} /></div><b>{v.score}% Score</b><small>{v.open} open assignments</small></div>)}</div></>;
-}
-
-function WorkOrders({ act }) {
-  return <section className="card"><h2>Work Orders</h2>{['WO-1048 Paint touchups Apt 204', 'WO-1049 Clean final Apt 118', 'WO-1050 Replace blinds Apt 411', 'WO-1051 Floor repair Apt 302'].map((w) => <div className="row" key={w}><ClipboardList /><span>{w}</span><button onClick={() => act(`${w.split(' ')[0]} opened`)}>Open</button></div>)}</section>;
-}
-
-function Scheduling() {
-  return <div className="grid three">{['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Weekend'].map((d, i) => <div className="card" key={d}><h2>{d}</h2><p>{8 + i * 2} scheduled turns</p><small>{i % 2 ? 'Cleaning crews heavy' : 'Painting crews heavy'}</small></div>)}</div>;
-}
-
-function Photos() {
-  return <div className="grid cards">{['Before Paint', 'After Clean', 'Punch Item', 'Final Approval', 'Floor Damage', 'Ready Unit'].map((x) => <div className="photo card" key={x}><div /><b>{x}</b><small>Uploaded today</small></div>)}</div>;
-}
-
-function Analytics() {
-  return <><KPIs /><section className="card"><h2>Executive Analytics</h2><div className="bars">{[['On-Time Completion', 94], ['Vendor Response', 88], ['Photo Compliance', 91], ['Average Turn Speed', 82], ['Cost Control', 89]].map((b) => <label key={b[0]}>{b[0]}<span>{b[1]}%</span><i><em style={{ width: `${b[1]}%` }} /></i></label>)}</div></section></>;
-}
-
-function AI({ act }) {
-  const prompts = ['Which turns are at risk today?', 'Summarize vendor performance', 'Where do we need more crews?', 'Create executive weekly recap'];
-  return <section className="card ai"><h2>AI Copilot</h2><p>Ask TurnPro what is happening across the portfolio.</p>{prompts.map((p) => <button key={p} onClick={() => act(`AI running: ${p}`)}>{p}</button>)}<div className="answer"><b>Sample AI Output</b><p>There are 7 late turns, primarily driven by cleaning delays in Tampa and Phoenix. Recommend dispatching one additional cleaning crew and escalating FloorPro for Apt 302.</p></div></section>;
-}
-
-function SettingsPage({ act }) {
-  return <section className="card"><h2>Settings</h2>{['Company Profile', 'User Roles', 'Notification Rules', 'SLA Targets', 'Vendor Permissions'].map((s) => <div className="row" key={s}><Settings /><span>{s}</span><button onClick={() => act(`${s} opened`)}>Edit</button></div>)}</section>;
-}
-
-function Activity() {
-  return <section className="card"><h2>Recent Activity</h2>{['Apt 204 photos uploaded', 'CleanCo marked Apt 118 delayed', 'Harbor Point turn completed', 'FloorPro requested approval', 'AI flagged 12 risk items'].map((a, i) => <div className="activity" key={a}><span>{i % 2 ? '⚠' : '✓'}</span>{a}</div>)}</section>;
-}
-
-function VendorBoard() {
-  return <section className="card"><h2>Vendor Performance</h2>{vendors.map((v) => <div className="vendor" key={v.name}><span>{v.name}<small>{v.trade}</small></span><b>{v.score}%</b></div>)}</section>;
-}
-
-function Insight({ icon, title, text }) {
-  return <div className="insight">{icon}<div><b>{title}</b><p>{text}</p></div></div>;
 }
 
 createRoot(document.getElementById('root')).render(<App />);
